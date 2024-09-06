@@ -1,0 +1,10 @@
+{
+  "name": "Blog",
+  "description": "Write an Awesome Articles.",
+  "code": "blog",
+  "author": "VitNode",
+  "author_url": "https://vitnode.com/",
+  "support_url": "https://vitnode.com/",
+  "allow_default": true,
+  "nav": []
+}

@@ -2,12 +2,12 @@
 
 import { Module } from '@nestjs/common';
 
-import { WelcomeModule } from './welcome/welcome.module';
+import { BlogModule } from './blog/blog.module';
 // ! === IMPORT ===
 
 @Module({
   imports: [
-    WelcomeModule,
+    BlogModule,
     // ! === MODULE ===
   ],
 })
