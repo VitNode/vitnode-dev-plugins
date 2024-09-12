@@ -54,8 +54,8 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2
       vitnode-backend:
-        specifier: 0.0.9-canary.49
-        version: 0.0.9-canary.49(zprjiv4oxxydmmzubey5dgggue)
+        specifier: 0.0.9-canary.50
+        version: 0.0.9-canary.50(zprjiv4oxxydmmzubey5dgggue)
     devDependencies:
       '@graphql-codegen/cli':
         specifier: ^5.0.2
@@ -94,8 +94,8 @@ importers:
         specifier: ^9.10.0
         version: 9.10.0(jiti@1.21.6)
       eslint-config-typescript-vitnode:
-        specifier: 0.0.9-canary.49
-        version: 0.0.9-canary.49(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
+        specifier: 0.0.9-canary.50
+        version: 0.0.9-canary.50(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
       pg:
         specifier: ^8.12.0
         version: 8.12.0
@@ -142,8 +142,8 @@ importers:
         specifier: ^7.53.0
         version: 7.53.0(react@19.0.0-rc-fb9a90fa48-20240614)
       vitnode-frontend:
-        specifier: 0.0.9-canary.49
-        version: 0.0.9-canary.49(uqwozg5t7b46g5vplfwq3a436q)
+        specifier: 0.0.9-canary.50
+        version: 0.0.9-canary.50(uqwozg5t7b46g5vplfwq3a436q)
     devDependencies:
       '@types/node':
         specifier: ^22.5.4
@@ -161,8 +161,8 @@ importers:
         specifier: ^9.10.0
         version: 9.10.0(jiti@1.21.6)
       eslint-config-typescript-vitnode:
-        specifier: 0.0.9-canary.49
-        version: 0.0.9-canary.49(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
+        specifier: 0.0.9-canary.50
+        version: 0.0.9-canary.50(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
       graphql-tag:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.9.0)
@@ -3994,8 +3994,8 @@ packages:
       eslint: ^9.9.1
       typescript: ^5.5.4
 
-  eslint-config-typescript-vitnode@0.0.9-canary.49:
-    resolution: {integrity: sha512-iwkEe0TV4K2OmEfd+OPd4DYdBE2kXTGaQC7WqdbsYb7tHSjL4+CaDn/IRieA3URyW1SslSxmWLlI0X+5K7f5xg==}
+  eslint-config-typescript-vitnode@0.0.9-canary.50:
+    resolution: {integrity: sha512-mN4GFoRvdj1m0GYIu2CdilFTbSu3vr/jsaIqv/faxH5AhDGayKMwNCKFCyzK/W3B8PX+sTbFEC8am+VTPntVZQ==}
     peerDependencies:
       eslint: ^9.9.1
       typescript: ^5.5.4
@@ -6706,8 +6706,8 @@ packages:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
 
-  vitnode-backend@0.0.9-canary.49:
-    resolution: {integrity: sha512-rdipvu0DtHDHPax5xkEBNoHnsrpNUSv5lJnKB+A85ESG1rfkk9ZzDCrXdnG6dJSSuyPmvPEqBTdEYud3WkQQfQ==}
+  vitnode-backend@0.0.9-canary.50:
+    resolution: {integrity: sha512-Qy2m4QJk8XUa58BTdSfrCKeiSsGjQvxPCq1zz7zrW96xSELQKWqXAqwo8rC8WnLLpiXIOB2TmkWhM7V2mt4ezQ==}
     hasBin: true
     peerDependencies:
       '@nestjs/apollo': ^12
@@ -6722,8 +6722,8 @@ packages:
       react-dom: ^19
       typescript: ^5.5.4
 
-  vitnode-frontend@0.0.9-canary.49:
-    resolution: {integrity: sha512-Oe+fcuYBiLx8bCJDi0UJ7zrmhIh9v701m35L2lTY/S7Iz2BWmwnQj83Mh00nTr9laCxZ88XZ9GWRJdG6yUMq4g==}
+  vitnode-frontend@0.0.9-canary.50:
+    resolution: {integrity: sha512-cqEKoH0iF6OOxY69tUQPfRjvYrBO2F4UtOU3UmYcYXOzspNWOrow1SDtjjDdgXBPRVJLleGSjxInGES3vJWAxw==}
     hasBin: true
     peerDependencies:
       '@hookform/resolvers': ^3.9.0
@@ -6732,8 +6732,8 @@ packages:
       next: 15.0.0-canary.137
       next-intl: ^3.19.0
       postcss: ^8.4.42
-      react: ^19
-      react-dom: ^19
+      react: ^19.0.0-rc-d6cb4e77-20240911
+      react-dom: ^19.0.0-rc-d6cb4e77-20240911
       react-hook-form: ^7.53.0
       tailwindcss: ^3.4.10
       typescript: ^5.5.4
@@ -11236,7 +11236,7 @@ snapshots:
       - svelte-eslint-parser
       - vue-eslint-parser
 
-  eslint-config-typescript-vitnode@0.0.9-canary.49(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2):
+  eslint-config-typescript-vitnode@0.0.9-canary.50(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2):
     dependencies:
       '@eslint/js': 9.10.0
       eslint: 9.10.0(jiti@1.21.6)
@@ -14142,7 +14142,7 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  vitnode-backend@0.0.9-canary.49(zprjiv4oxxydmmzubey5dgggue):
+  vitnode-backend@0.0.9-canary.50(zprjiv4oxxydmmzubey5dgggue):
     dependencies:
       '@apollo/server': 4.11.0(graphql@16.9.0)
       '@graphql-codegen/near-operation-file-preset': 3.0.0(graphql@16.9.0)
@@ -14189,7 +14189,7 @@ snapshots:
       - rxjs
       - supports-color
 
-  vitnode-frontend@0.0.9-canary.49(uqwozg5t7b46g5vplfwq3a436q):
+  vitnode-frontend@0.0.9-canary.50(uqwozg5t7b46g5vplfwq3a436q):
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)

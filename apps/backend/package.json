@@ -24,7 +24,7 @@
     "react": "^19.0.0-rc-d6cb4e77-20240911",
     "react-dom": "^19.0.0-rc-d6cb4e77-20240911",
     "reflect-metadata": "^0.2.2",
-    "vitnode-backend": "0.0.9-canary.49"
+    "vitnode-backend": "0.0.9-canary.50"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.2",
@@ -39,7 +39,7 @@
     "drizzle-kit": "^0.24.2",
     "drizzle-orm": "^0.33.0",
     "eslint": "^9.10.0",
-    "eslint-config-typescript-vitnode": "0.0.9-canary.49",
+    "eslint-config-typescript-vitnode": "0.0.9-canary.50",
     "pg": "^8.12.0",
     "source-map-support": "^0.5.21",
     "ts-loader": "^9.5.1",
