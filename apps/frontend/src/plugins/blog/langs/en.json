@@ -1,5 +1,9 @@
 {
-  "blog": {
-    "admin": {}
+  "blog": {},
+  "admin_blog": {
+    "nav": {
+      "title": "Blog",
+      "categories": "Categories"
+    }
   }
 }

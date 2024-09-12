@@ -15,11 +15,10 @@
   },
   "overrides": {},
   "devDependencies": {
+    "eslint-config-typescript-vitnode": "0.0.9-canary.48",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
-    "eslint-config-typescript-vitnode": "^0.0.9-canary.43",
-    "turbo": "^2.1.1",
-    "typescript": "^5.5.4"
+    "turbo": "^2.1.1"
   },
   "packageManager": "pnpm@9.5.0",
   "workspaces": [

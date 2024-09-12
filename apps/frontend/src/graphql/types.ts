@@ -143,8 +143,8 @@ export type EditAdminMembersObj = {
 
 export type EditAdminSettingsObj = {
   __typename?: 'EditAdminSettingsObj';
-  site_copyright: Array<TextLanguage>;
-  site_description: Array<TextLanguage>;
+  site_copyright: Array<StringLanguage>;
+  site_description: Array<StringLanguage>;
   site_name: Scalars['String']['output'];
 };
 
@@ -161,16 +161,6 @@ export const EmailProvider = {
 } as const;
 
 export type EmailProvider = typeof EmailProvider[keyof typeof EmailProvider];
-export type FilesAdminPluginsObj = {
-  __typename?: 'FilesAdminPluginsObj';
-  admin_pages: Scalars['Int']['output'];
-  admin_templates: Scalars['Int']['output'];
-  databases: Scalars['Int']['output'];
-  default_page: Scalars['Boolean']['output'];
-  pages: Scalars['Int']['output'];
-  templates: Scalars['Int']['output'];
-};
-
 export type FilesAuthorizationCoreSessions = {
   __typename?: 'FilesAuthorizationCoreSessions';
   allow_upload: Scalars['Boolean']['output'];
@@ -192,7 +182,7 @@ export type GroupUser = {
   __typename?: 'GroupUser';
   color?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
-  name: Array<TextLanguage>;
+  name: Array<StringLanguage>;
 };
 
 export type HslColor = {
@@ -259,11 +249,11 @@ export type Mutation = {
   admin__core_groups__edit: ShowAdminGroups;
   admin__core_languages__create: ShowCoreLanguages;
   admin__core_languages__delete: Scalars['String']['output'];
-  admin__core_languages__download: Scalars['String']['output'];
   admin__core_languages__edit: ShowCoreLanguages;
   admin__core_main_settings__edit: EditAdminSettingsObj;
   admin__core_manifest_metadata__edit: ShowAdminManifestMetadataObj;
   admin__core_members__create: SignUpCoreSessionsObj;
+  admin__core_members__delete: Scalars['String']['output'];
   admin__core_members__edit: EditAdminMembersObj;
   admin__core_nav_styles__change_position: Scalars['String']['output'];
   admin__core_plugins__create: ShowAdminPlugins;
@@ -295,7 +285,6 @@ export type Mutation = {
   core_members__avatar__delete: Scalars['String']['output'];
   core_members__avatar__upload: UploadAvatarCoreMembersObj;
   core_members__change_password: Scalars['String']['output'];
-  core_members__delete: Scalars['String']['output'];
   core_members__reset_password__create_key: Scalars['String']['output'];
   core_sessions__sign_in: Scalars['String']['output'];
   core_sessions__sign_out: Scalars['String']['output'];
@@ -336,7 +325,7 @@ export type MutationAdmin__Core_Files__DeleteArgs = {
 export type MutationAdmin__Core_Groups__CreateArgs = {
   color?: InputMaybe<Scalars['String']['input']>;
   content: ContentCreateAdminGroups;
-  name: Array<TextLanguageInput>;
+  name: Array<StringLanguageInput>;
 };
 
 
@@ -349,7 +338,7 @@ export type MutationAdmin__Core_Groups__EditArgs = {
   color?: InputMaybe<Scalars['String']['input']>;
   content: ContentCreateAdminGroups;
   id: Scalars['Int']['input'];
-  name: Array<TextLanguageInput>;
+  name: Array<StringLanguageInput>;
 };
 
 
@@ -368,12 +357,6 @@ export type MutationAdmin__Core_Languages__DeleteArgs = {
 };
 
 
-export type MutationAdmin__Core_Languages__DownloadArgs = {
-  code: Scalars['String']['input'];
-  plugins: Array<Scalars['String']['input']>;
-};
-
-
 export type MutationAdmin__Core_Languages__EditArgs = {
   allow_in_input: Scalars['Boolean']['input'];
   default: Scalars['Boolean']['input'];
@@ -387,8 +370,8 @@ export type MutationAdmin__Core_Languages__EditArgs = {
 
 
 export type MutationAdmin__Core_Main_Settings__EditArgs = {
-  site_copyright: Array<TextLanguageInput>;
-  site_description: Array<TextLanguageInput>;
+  site_copyright: Array<StringLanguageInput>;
+  site_description: Array<StringLanguageInput>;
   site_name: Scalars['String']['input'];
   site_short_name: Scalars['String']['input'];
 };
@@ -409,12 +392,14 @@ export type MutationAdmin__Core_Members__CreateArgs = {
 };
 
 
+export type MutationAdmin__Core_Members__DeleteArgs = {
+  id: Scalars['Float']['input'];
+};
+
+
 export type MutationAdmin__Core_Members__EditArgs = {
-  birthday?: InputMaybe<Scalars['DateTime']['input']>;
   email: Scalars['String']['input'];
-  first_name?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['Int']['input'];
-  last_name?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   newsletter: Scalars['Boolean']['input'];
 };
@@ -471,7 +456,6 @@ export type MutationAdmin__Core_Plugins__Nav__Change_PositionArgs = {
 
 export type MutationAdmin__Core_Plugins__Nav__CreateArgs = {
   code: Scalars['String']['input'];
-  href: Scalars['String']['input'];
   icon?: InputMaybe<Scalars['String']['input']>;
   keywords: Array<Scalars['String']['input']>;
   parent_code?: InputMaybe<Scalars['String']['input']>;
@@ -488,7 +472,6 @@ export type MutationAdmin__Core_Plugins__Nav__DeleteArgs = {
 
 export type MutationAdmin__Core_Plugins__Nav__EditArgs = {
   code: Scalars['String']['input'];
-  href: Scalars['String']['input'];
   icon?: InputMaybe<Scalars['String']['input']>;
   keywords: Array<Scalars['String']['input']>;
   parent_code?: InputMaybe<Scalars['String']['input']>;
@@ -541,11 +524,11 @@ export type MutationAdmin__Core_Styles__Editor__EditArgs = {
 
 
 export type MutationAdmin__Core_Styles__Nav__CreateArgs = {
-  description: Array<TextLanguageInput>;
+  description: Array<StringLanguageInput>;
   external: Scalars['Boolean']['input'];
   href: Scalars['String']['input'];
   icon?: InputMaybe<Scalars['String']['input']>;
-  name: Array<TextLanguageInput>;
+  name: Array<StringLanguageInput>;
 };
 
 
@@ -555,34 +538,34 @@ export type MutationAdmin__Core_Styles__Nav__DeleteArgs = {
 
 
 export type MutationAdmin__Core_Styles__Nav__EditArgs = {
-  description: Array<TextLanguageInput>;
+  description: Array<StringLanguageInput>;
   external: Scalars['Boolean']['input'];
   href: Scalars['String']['input'];
   icon?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['Int']['input'];
-  name: Array<TextLanguageInput>;
+  name: Array<StringLanguageInput>;
 };
 
 
 export type MutationAdmin__Core_Terms_Settings__CreateArgs = {
   code: Scalars['String']['input'];
-  content: Array<TextLanguageInput>;
+  content: Array<StringLanguageInput>;
   href?: InputMaybe<Scalars['String']['input']>;
-  title: Array<TextLanguageInput>;
+  title: Array<StringLanguageInput>;
 };
 
 
 export type MutationAdmin__Core_Terms_Settings__DeleteArgs = {
-  id: Scalars['Int']['input'];
+  code: Scalars['String']['input'];
 };
 
 
 export type MutationAdmin__Core_Terms_Settings__EditArgs = {
   code: Scalars['String']['input'];
-  content: Array<TextLanguageInput>;
+  content: Array<StringLanguageInput>;
   href?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['Float']['input'];
-  title: Array<TextLanguageInput>;
+  title: Array<StringLanguageInput>;
 };
 
 
@@ -616,11 +599,6 @@ export type MutationCore_Members__Change_PasswordArgs = {
 };
 
 
-export type MutationCore_Members__DeleteArgs = {
-  id: Scalars['Int']['input'];
-};
-
-
 export type MutationCore_Members__Reset_Password__Create_KeyArgs = {
   email: Scalars['String']['input'];
 };
@@ -645,7 +623,6 @@ export type NavSearchAdminSessions = {
   __typename?: 'NavSearchAdminSessions';
   code: Scalars['String']['output'];
   code_plugin: Scalars['String']['output'];
-  href: Scalars['String']['output'];
   icon?: Maybe<Scalars['String']['output']>;
   keywords: Array<Scalars['String']['output']>;
   parent_nav_code?: Maybe<Scalars['String']['output']>;
@@ -670,7 +647,6 @@ export type Query = {
   admin__core_manifest_metadata__show: ShowAdminManifestMetadataObj;
   admin__core_members__show: ShowAdminMembersObj;
   admin__core_members__stats_sign_up: Array<SignUpStatsAdminMembers>;
-  admin__core_plugins__files: FilesAdminPluginsObj;
   admin__core_plugins__nav__show: Array<ShowAdminNavPluginsObj>;
   admin__core_plugins__show: ShowAdminPluginsObj;
   admin__core_security__captcha__show: ShowAdminCaptchaSecurityObj;
@@ -716,14 +692,10 @@ export type QueryAdmin__Core_Members__ShowArgs = {
   cursor?: InputMaybe<Scalars['Int']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   groups?: InputMaybe<Array<Scalars['Int']['input']>>;
+  id?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   search?: InputMaybe<Scalars['String']['input']>;
   sortBy?: InputMaybe<ShowAdminMembersSortByArgs>;
-};
-
-
-export type QueryAdmin__Core_Plugins__FilesArgs = {
-  code: Scalars['String']['input'];
 };
 
 
@@ -879,7 +851,7 @@ export type ShowAdminGroups = {
   default: Scalars['Boolean']['output'];
   guest: Scalars['Boolean']['output'];
   id: Scalars['Int']['output'];
-  name: Array<TextLanguage>;
+  name: Array<StringLanguage>;
   protected: Scalars['Boolean']['output'];
   root: Scalars['Boolean']['output'];
   updated: Scalars['DateTime']['output'];
@@ -925,7 +897,6 @@ export type ShowAdminMembers = {
   name: Scalars['String']['output'];
   name_seo: Scalars['String']['output'];
   newsletter: Scalars['Boolean']['output'];
-  posts: Scalars['Int']['output'];
 };
 
 export type ShowAdminMembersObj = {
@@ -959,7 +930,6 @@ export type ShowAdminNavObj = {
 export type ShowAdminNavPlugins = {
   __typename?: 'ShowAdminNavPlugins';
   code: Scalars['String']['output'];
-  href: Scalars['String']['output'];
   icon?: Maybe<Scalars['String']['output']>;
   keywords: Array<Scalars['String']['output']>;
 };
@@ -968,7 +938,6 @@ export type ShowAdminNavPluginsObj = {
   __typename?: 'ShowAdminNavPluginsObj';
   children?: Maybe<Array<ShowAdminNavPlugins>>;
   code: Scalars['String']['output'];
-  href: Scalars['String']['output'];
   icon?: Maybe<Scalars['String']['output']>;
   keywords: Array<Scalars['String']['output']>;
 };
@@ -1137,7 +1106,6 @@ export type ShowCoreMembers = {
   language: Scalars['String']['output'];
   name: Scalars['String']['output'];
   name_seo: Scalars['String']['output'];
-  posts: Scalars['Int']['output'];
 };
 
 export type ShowCoreMembersObj = {
@@ -1174,23 +1142,23 @@ export type ShowCoreMiddlewareObj = {
 export type ShowCoreNav = {
   __typename?: 'ShowCoreNav';
   children: Array<ShowCoreNavItem>;
-  description: Array<TextLanguage>;
+  description: Array<StringLanguage>;
   external: Scalars['Boolean']['output'];
   href: Scalars['String']['output'];
   icon?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
-  name: Array<TextLanguage>;
+  name: Array<StringLanguage>;
   position: Scalars['Int']['output'];
 };
 
 export type ShowCoreNavItem = {
   __typename?: 'ShowCoreNavItem';
-  description: Array<TextLanguage>;
+  description: Array<StringLanguage>;
   external: Scalars['Boolean']['output'];
   href: Scalars['String']['output'];
   icon?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
-  name: Array<TextLanguage>;
+  name: Array<StringLanguage>;
   position: Scalars['Int']['output'];
 };
 
@@ -1222,11 +1190,11 @@ export type ShowCoreSessionDevicesObj = {
 export type ShowCoreTerms = {
   __typename?: 'ShowCoreTerms';
   code: Scalars['String']['output'];
-  content: Array<TextLanguage>;
+  content: Array<StringLanguage>;
   created: Scalars['DateTime']['output'];
   href?: Maybe<Scalars['String']['output']>;
   id: Scalars['Float']['output'];
-  title: Array<TextLanguage>;
+  title: Array<StringLanguage>;
   updated: Scalars['DateTime']['output'];
 };
 
@@ -1244,8 +1212,8 @@ export type ShowCoreThemeEditorObj = {
 
 export type ShowSettingsObj = {
   __typename?: 'ShowSettingsObj';
-  site_copyright: Array<TextLanguage>;
-  site_description: Array<TextLanguage>;
+  site_copyright: Array<StringLanguage>;
+  site_description: Array<StringLanguage>;
   site_name: Scalars['String']['output'];
   site_short_name: Scalars['String']['output'];
 };
@@ -1273,17 +1241,17 @@ export type SortDirectionEnum = typeof SortDirectionEnum[keyof typeof SortDirect
 export type StaffGroupUser = {
   __typename?: 'StaffGroupUser';
   color?: Maybe<Scalars['String']['output']>;
-  group_name: Array<TextLanguage>;
+  group_name: Array<StringLanguage>;
   id: Scalars['Int']['output'];
 };
 
-export type TextLanguage = {
-  __typename?: 'TextLanguage';
+export type StringLanguage = {
+  __typename?: 'StringLanguage';
   language_code: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
 
-export type TextLanguageInput = {
+export type StringLanguageInput = {
   language_code: Scalars['String']['input'];
   value: Scalars['String']['input'];
 };
