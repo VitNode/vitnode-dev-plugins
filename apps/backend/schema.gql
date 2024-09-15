@@ -294,6 +294,7 @@ type Query {
   admin__nav__show: [ShowAdminNavObj!]!
   admin__sessions__authorization: AuthorizationAdminSessionsObj!
   admin__sessions__search(search: String!): SearchAdminSessionsObj!
+  blog_categories__show(cursor: Int, first: Int, last: Int): ShowBlogCategoriesObj!
   core_files__show(cursor: Int, first: Int, last: Int, search: String, sortBy: ShowCoreFilesSortByArgs): ShowCoreFilesObj!
   core_languages__show(cursor: Int, first: Int, last: Int, search: String, sortBy: ShowCoreLanguagesSortByArgs): ShowCoreLanguagesObj!
   core_members__show(cursor: Int, first: Int, last: Int, name_seo: String, search: String, sortBy: ShowCoreMembersSortByArgs): ShowCoreMembersObj!
@@ -531,6 +532,17 @@ input ShowAdminStaffModeratorsSortByArgs {
 
 enum ShowAdminStaffModeratorsSortingColumnEnum {
   updated
+}
+
+type ShowBlogCategories {
+  color: String
+  id: Int!
+  name: [StringLanguage!]!
+}
+
+type ShowBlogCategoriesObj {
+  edges: [ShowBlogCategories!]!
+  pageInfo: PageInfo!
 }
 
 type ShowCoreFiles {

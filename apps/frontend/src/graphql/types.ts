@@ -657,6 +657,7 @@ export type Query = {
   admin__nav__show: Array<ShowAdminNavObj>;
   admin__sessions__authorization: AuthorizationAdminSessionsObj;
   admin__sessions__search: SearchAdminSessionsObj;
+  blog_categories__show: ShowBlogCategoriesObj;
   core_files__show: ShowCoreFilesObj;
   core_languages__show: ShowCoreLanguagesObj;
   core_members__show: ShowCoreMembersObj;
@@ -733,6 +734,13 @@ export type QueryAdmin__Core_Staff_Moderators__ShowArgs = {
 
 export type QueryAdmin__Sessions__SearchArgs = {
   search: Scalars['String']['input'];
+};
+
+
+export type QueryBlog_Categories__ShowArgs = {
+  cursor?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -1030,6 +1038,19 @@ export const ShowAdminStaffModeratorsSortingColumnEnum = {
 } as const;
 
 export type ShowAdminStaffModeratorsSortingColumnEnum = typeof ShowAdminStaffModeratorsSortingColumnEnum[keyof typeof ShowAdminStaffModeratorsSortingColumnEnum];
+export type ShowBlogCategories = {
+  __typename?: 'ShowBlogCategories';
+  color?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Int']['output'];
+  name: Array<StringLanguage>;
+};
+
+export type ShowBlogCategoriesObj = {
+  __typename?: 'ShowBlogCategoriesObj';
+  edges: Array<ShowBlogCategories>;
+  pageInfo: PageInfo;
+};
+
 export type ShowCoreFiles = {
   __typename?: 'ShowCoreFiles';
   count_uses: Scalars['Int']['output'];

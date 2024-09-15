@@ -54,8 +54,8 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2
       vitnode-backend:
-        specifier: 0.0.9-canary.51
-        version: 0.0.9-canary.51(qvk2stwjxdceg6xkcsdq7bghau)
+        specifier: 0.0.9-canary.52
+        version: 0.0.9-canary.52(o3rpc5dchy7kffxdvy6dail6xi)
     devDependencies:
       '@graphql-codegen/cli':
         specifier: ^5.0.2
@@ -94,8 +94,8 @@ importers:
         specifier: ^9.10.0
         version: 9.10.0(jiti@1.21.6)
       eslint-config-typescript-vitnode:
-        specifier: 0.0.9-canary.51
-        version: 0.0.9-canary.51(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
+        specifier: 0.0.9-canary.52
+        version: 0.0.9-canary.52(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
       pg:
         specifier: ^8.12.0
         version: 8.12.0
@@ -142,8 +142,8 @@ importers:
         specifier: ^7.53.0
         version: 7.53.0(react@19.0.0-rc-fb9a90fa48-20240614)
       vitnode-frontend:
-        specifier: 0.0.9-canary.51
-        version: 0.0.9-canary.51(4n3uhwhxmbiybv64buvkakndcy)
+        specifier: 0.0.9-canary.52
+        version: 0.0.9-canary.52(4n3uhwhxmbiybv64buvkakndcy)
     devDependencies:
       '@types/node':
         specifier: ^22.5.5
@@ -161,8 +161,8 @@ importers:
         specifier: ^9.10.0
         version: 9.10.0(jiti@1.21.6)
       eslint-config-typescript-vitnode:
-        specifier: 0.0.9-canary.51
-        version: 0.0.9-canary.51(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
+        specifier: 0.0.9-canary.52
+        version: 0.0.9-canary.52(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2)
       graphql-tag:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.9.0)
@@ -1543,13 +1543,6 @@ packages:
         optional: true
       fastify:
         optional: true
-
-  '@nestjs/throttler@6.2.1':
-    resolution: {integrity: sha512-vdt6VjhKC6vcLBJRUb97IuR6Htykn5kokZzmT8+S5XFOLLjUF7rzRpr+nUOhK9pi1L0hhbzSf2v2FJl4v64EJA==}
-    peerDependencies:
-      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
-      '@nestjs/core': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
-      reflect-metadata: ^0.1.13 || ^0.2.0
 
   '@next/env@15.0.0-canary.155':
     resolution: {integrity: sha512-A3To+P4XnKPls2cFHqwEMXJKzRISJVbjUPGKz6nkRZFXd8q9DlSfzAXicIyi5U7lg8DefsNbOoYQ+7xJ2yfX0A==}
@@ -3994,8 +3987,8 @@ packages:
       eslint: ^9.9.1
       typescript: ^5.5.4
 
-  eslint-config-typescript-vitnode@0.0.9-canary.51:
-    resolution: {integrity: sha512-yJUL/zfN0LiwnGJW8GYLiXwO1ESL3ie66pHgHQSeRXbp/nTDCX1Tc2gEes8IbfqxeJkwxanBRLW+Cj2co9yXzw==}
+  eslint-config-typescript-vitnode@0.0.9-canary.52:
+    resolution: {integrity: sha512-U/lJseFUyRu/D5ZUbdDbLpwnTJ/zaQeoWiDl2JQs7VFcCs2DXGJsSJ3P+u9tRl585d3AeWiDDQ6t0wQPJA4Cbg==}
     peerDependencies:
       eslint: ^9.9.1
       typescript: ^5.5.4
@@ -6172,12 +6165,6 @@ packages:
   snake-case@3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
 
-  sonner@1.5.0:
-    resolution: {integrity: sha512-FBjhG/gnnbN6FY0jaNnqZOMmB73R+5IiyYAw8yBj7L54ER7HB3fOSE5OFiQiE2iXWxeXKvg6fIP4LtVppHEdJA==}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-
   sort-keys-length@1.0.1:
     resolution: {integrity: sha512-GRbEOUqCxemTAk/b32F2xa8wDTs+Z1QHOkbhJDQTvv/6G3ZkbJ+frYWsTcc7cBB3Fu4wy4XlLCuNtJuMn7Gsvw==}
     engines: {node: '>=0.10.0'}
@@ -6707,8 +6694,8 @@ packages:
       react: ^16.8 || ^17.0 || ^18.0
       react-dom: ^16.8 || ^17.0 || ^18.0
 
-  vitnode-backend@0.0.9-canary.51:
-    resolution: {integrity: sha512-upO7weULeUK1ODPL35S5kX31MsHsviZfdMel6UERSMiIAS+PA+E/dBlfSi6FTs1ipfi6xPfulqzEbFH9Zg/ZAg==}
+  vitnode-backend@0.0.9-canary.52:
+    resolution: {integrity: sha512-mFRjFlIvPQnokLogkxM08im0GUrHdCVPIltw+Ko8kaIKcQX9RLdF66A4XOHJxqcTe2QhVJUPahfjSYSH80EgKQ==}
     hasBin: true
     peerDependencies:
       '@nestjs/apollo': ^12
@@ -6723,8 +6710,8 @@ packages:
       react-dom: ^19
       typescript: ^5.5.4
 
-  vitnode-frontend@0.0.9-canary.51:
-    resolution: {integrity: sha512-YD6Sxe8QqlnBOtz8Gf2hTC/amwe0Y+kR3B7JvJ1/D3yXO+SgICVZ/hBL/dWuNjb/5nOpr5bkyx6/iSx0i0rEMw==}
+  vitnode-frontend@0.0.9-canary.52:
+    resolution: {integrity: sha512-tELtQWL3rVBuFW24BZ/+/MPNd3XUBppGe2vTyQqUMPrCoAfFq3iwen/8t8ZaKhuu4st/UZhPgzrQAOGaZ2Q3/A==}
     hasBin: true
     peerDependencies:
       '@hookform/resolvers': ^3.9.0
@@ -6927,9 +6914,6 @@ packages:
   zeed-dom@0.10.11:
     resolution: {integrity: sha512-7ukbu6aQKx34OQ7PfUIxOuAhk2MvyZY/t4/IJsVzy76zuMzfhE74+Dbyp8SHiUJPTPkF0FflP1KVrGJ7gk9IHw==}
     engines: {node: '>=14.13.1'}
-
-  zod@3.23.8:
-    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
 snapshots:
 
@@ -8585,12 +8569,6 @@ snapshots:
       path-to-regexp: 0.2.5
     optionalDependencies:
       express: 4.21.0
-
-  '@nestjs/throttler@6.2.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)':
-    dependencies:
-      '@nestjs/common': 10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
-      '@nestjs/core': 10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
-      reflect-metadata: 0.2.2
 
   '@next/env@15.0.0-canary.155': {}
 
@@ -11237,7 +11215,7 @@ snapshots:
       - svelte-eslint-parser
       - vue-eslint-parser
 
-  eslint-config-typescript-vitnode@0.0.9-canary.51(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2):
+  eslint-config-typescript-vitnode@0.0.9-canary.52(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.6.2):
     dependencies:
       '@eslint/js': 9.10.0
       eslint: 9.10.0(jiti@1.21.6)
@@ -13598,11 +13576,6 @@ snapshots:
       dot-case: 3.0.4
       tslib: 2.7.0
 
-  sonner@1.5.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614):
-    dependencies:
-      react: 19.0.0-rc-fb9a90fa48-20240614
-      react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
-
   sort-keys-length@1.0.1:
     dependencies:
       sort-keys: 1.1.2
@@ -14143,7 +14116,7 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  vitnode-backend@0.0.9-canary.51(qvk2stwjxdceg6xkcsdq7bghau):
+  vitnode-backend@0.0.9-canary.52(o3rpc5dchy7kffxdvy6dail6xi):
     dependencies:
       '@apollo/server': 4.11.0(graphql@16.9.0)
       '@graphql-codegen/near-operation-file-preset': 3.0.0(graphql@16.9.0)
@@ -14157,7 +14130,6 @@ snapshots:
       '@nestjs/graphql': 12.2.0(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(class-transformer@0.5.1)(class-validator@0.14.1)(graphql@16.9.0)(reflect-metadata@0.2.2)
       '@nestjs/jwt': 10.2.0(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))
       '@nestjs/serve-static': 4.0.2(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(express@4.21.0)
-      '@nestjs/throttler': 6.2.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)
       '@react-email/components': 0.0.25(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@react-email/render': 1.0.1(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@swc/cli': 0.4.0(@swc/core@1.7.26(@swc/helpers@0.5.13))(chokidar@3.6.0)
@@ -14186,11 +14158,10 @@ snapshots:
       - express
       - fastify
       - graphql
-      - reflect-metadata
       - rxjs
       - supports-color
 
-  vitnode-frontend@0.0.9-canary.51(4n3uhwhxmbiybv64buvkakndcy):
+  vitnode-frontend@0.0.9-canary.52(4n3uhwhxmbiybv64buvkakndcy):
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -14255,7 +14226,6 @@ snapshots:
       react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
       react-hook-form: 7.53.0(react@19.0.0-rc-fb9a90fa48-20240614)
       react-virtuoso: 4.10.4(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
-      sonner: 1.5.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       tailwind-merge: 2.5.2
       tailwindcss: 3.4.11(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@22.5.5)(typescript@5.6.2))
       tailwindcss-animate: 1.0.7(tailwindcss@3.4.11(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@22.5.5)(typescript@5.6.2)))
@@ -14263,7 +14233,6 @@ snapshots:
       typescript: 5.6.2
       use-debounce: 10.0.3(react@19.0.0-rc-fb9a90fa48-20240614)
       vaul: 0.9.3(@types/react-dom@18.3.0)(@types/react@18.3.5)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
-      zod: 3.23.8
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
       - '@tiptap/core'
@@ -14473,5 +14442,3 @@ snapshots:
   zeed-dom@0.10.11:
     dependencies:
       css-what: 6.1.0
-
-  zod@3.23.8: {}
