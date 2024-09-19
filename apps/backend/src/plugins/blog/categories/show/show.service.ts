@@ -8,7 +8,7 @@ import {
   StringLanguageHelper,
 } from 'vitnode-backend';
 
-import { blog_categories } from '../../database/schema/categories';
+import { blog_categories } from '../../admin/database/schema/categories';
 import { ShowBlogCategoriesArgs, ShowBlogCategoriesObj } from './show.dto';
 
 @Injectable()

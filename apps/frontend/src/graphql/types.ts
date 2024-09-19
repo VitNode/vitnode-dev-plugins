@@ -241,6 +241,7 @@ export type LogosEditAdminThemeEditor = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  admin__blog_categories__create_edit: ShowBlogCategories;
   admin__core_authorization_settings__edit: ShowAdminAuthorizationSettingsObj;
   admin__core_email_settings__edit: ShowAdminEmailSettingsServiceObj;
   admin__core_email_settings__test: Scalars['String']['output'];
@@ -290,6 +291,14 @@ export type Mutation = {
   core_sessions__sign_in: Scalars['String']['output'];
   core_sessions__sign_out: Scalars['String']['output'];
   core_sessions__sign_up: SignUpCoreSessionsObj;
+};
+
+
+export type MutationAdmin__Blog_Categories__Create_EditArgs = {
+  color?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['Float']['input']>;
+  name: Array<StringLanguageInput>;
+  position?: InputMaybe<Scalars['Float']['input']>;
 };
 
 
@@ -528,7 +537,6 @@ export type MutationAdmin__Core_Styles__Nav__CreateArgs = {
   description: Array<StringLanguageInput>;
   external: Scalars['Boolean']['input'];
   href: Scalars['String']['input'];
-  icon?: InputMaybe<Scalars['String']['input']>;
   name: Array<StringLanguageInput>;
 };
 
@@ -542,7 +550,6 @@ export type MutationAdmin__Core_Styles__Nav__EditArgs = {
   description: Array<StringLanguageInput>;
   external: Scalars['Boolean']['input'];
   href: Scalars['String']['input'];
-  icon?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['Int']['input'];
   name: Array<StringLanguageInput>;
 };
@@ -1167,7 +1174,6 @@ export type ShowCoreNav = {
   description: Array<StringLanguage>;
   external: Scalars['Boolean']['output'];
   href: Scalars['String']['output'];
-  icon?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   name: Array<StringLanguage>;
   position: Scalars['Int']['output'];
@@ -1178,7 +1184,6 @@ export type ShowCoreNavItem = {
   description: Array<StringLanguage>;
   external: Scalars['Boolean']['output'];
   href: Scalars['String']['output'];
-  icon?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   name: Array<StringLanguage>;
   position: Scalars['Int']['output'];

@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
 
-import { ShowBlogCategoriesResolver } from './show/show.resolver';
-import { ShowBlogCategoriesService } from './show/show.service';
+import { CreateEditAdminBlogCategoriesResolver } from './create-edit/create-edit.resolver';
+import { CreateEditAdminCategoriesBlogService } from './create-edit/create-edit.service';
 
 @Module({
-  providers: [ShowBlogCategoriesResolver, ShowBlogCategoriesService],
+  providers: [
+    CreateEditAdminCategoriesBlogService,
+    CreateEditAdminBlogCategoriesResolver,
+  ],
 })
 export class AdminCategoriesBlogModule {}
