@@ -1,0 +1,12 @@
+query Blog_categories__show {
+  blog_categories__show {
+    edges {
+      color
+      id
+      name {
+        language_code
+        value
+      }
+    }
+  }
+}

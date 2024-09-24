@@ -4,6 +4,10 @@
     "nav": {
       "title": "Blog",
       "categories": "Categories"
+    },
+    "categories": {
+      "title": "Categories",
+      "desc": "Manage categories for your articles."
     }
   }
 }
