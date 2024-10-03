@@ -2,12 +2,7 @@
   "blog": {},
   "admin_blog": {
     "nav": {
-      "title": "Blog",
-      "categories": "Categories"
-    },
-    "categories": {
-      "title": "Categories",
-      "desc": "Manage categories for your articles."
+      "title": "Blog"
     }
   }
 }

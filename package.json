@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "config:init": "turbo config:init",
-    "dev": "turbo dev",
+    "dev": "turbo config:init && turbo dev",
     "build": "turbo build",
     "start": "turbo start",
     "codegen": "turbo codegen",
@@ -15,12 +15,12 @@
   },
   "overrides": {},
   "devDependencies": {
-    "eslint-config-typescript-vitnode": "0.0.9-canary.48",
+    "eslint-config-typescript-vitnode": "^0.0.9-canary.61",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.6",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "turbo": "^2.1.2"
   },
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.10.0",
   "workspaces": [
     "apps/*"
   ]
