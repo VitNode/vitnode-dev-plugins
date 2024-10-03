@@ -2,8 +2,7 @@
   "blog": {},
   "admin_blog": {
     "nav": {
-      "title": "Blog",
-      "categories": "Categories"
+      "title": "Blog"
     }
   }
 }
