@@ -1,12 +1,12 @@
 import { getRequestConfig } from 'next-intl/server';
-import { i18nConfig } from 'vitnode-frontend/i18n';
+import { i18nConfigVitNode } from 'vitnode-frontend/i18n';
 
-export default getRequestConfig(async args => {
-  const config = await i18nConfig({
-    ...args,
+export default getRequestConfig(async ({ requestLocale }) => {
+  const config = await i18nConfigVitNode({
     pathsToMessagesFromPlugins: async ({ plugin, locale }) => {
-      return import(`./plugins/${plugin}/langs/${locale}.json`);
+      return await import(`./plugins/${plugin}/langs/${locale}.json`);
     },
+    requestLocale,
   });
 
   return config;

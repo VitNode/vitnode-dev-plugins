@@ -1,7 +1,7 @@
-import { integer, pgTable, serial, varchar } from 'drizzle-orm/pg-core';
+import { pgTable } from 'drizzle-orm/pg-core';
 
-export const blog_categories = pgTable('blog_categories', {
-  id: serial('id').primaryKey(),
-  color: varchar('color', { length: 6 }),
-  position: integer('position').notNull().default(0),
-});
+export const blog_categories = pgTable('blog_categories', t => ({
+  id: t.serial().primaryKey(),
+  color: t.varchar({ length: 6 }).notNull(),
+  position: t.integer().notNull().default(0),
+}));

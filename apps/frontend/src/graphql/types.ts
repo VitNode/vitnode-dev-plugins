@@ -26,6 +26,7 @@ export const AllowTypeFilesEnum = {
 export type AllowTypeFilesEnum = typeof AllowTypeFilesEnum[keyof typeof AllowTypeFilesEnum];
 export type AuthorizationAdminSessionsObj = {
   __typename?: 'AuthorizationAdminSessionsObj';
+  files: FilesAuthorizationCoreSessions;
   restart_server: Scalars['Boolean']['output'];
   user?: Maybe<AuthorizationCurrentUserObj>;
   version: Scalars['String']['output'];
@@ -155,13 +156,6 @@ export type EditorShowCoreMiddleware = {
   sticky: Scalars['Boolean']['output'];
 };
 
-export const EmailProvider = {
-  none: 'none',
-  resend: 'resend',
-  smtp: 'smtp'
-} as const;
-
-export type EmailProvider = typeof EmailProvider[keyof typeof EmailProvider];
 export type FilesAuthorizationCoreSessions = {
   __typename?: 'FilesAuthorizationCoreSessions';
   allow_upload: Scalars['Boolean']['output'];
@@ -239,8 +233,25 @@ export type LogosEditAdminThemeEditor = {
   width: Scalars['Float']['input'];
 };
 
+export type LogsAdminEmail = {
+  __typename?: 'LogsAdminEmail';
+  created: Scalars['DateTime']['output'];
+  error: Scalars['String']['output'];
+  html: Scalars['String']['output'];
+  id: Scalars['Float']['output'];
+  subject: Scalars['String']['output'];
+  to: Scalars['String']['output'];
+};
+
+export type LogsAdminEmailObj = {
+  __typename?: 'LogsAdminEmailObj';
+  edges: Array<LogsAdminEmail>;
+  pageInfo: PageInfo;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  admin__core_ai__test: Scalars['String']['output'];
   admin__core_authorization_settings__edit: ShowAdminAuthorizationSettingsObj;
   admin__core_email_settings__edit: ShowAdminEmailSettingsServiceObj;
   admin__core_email_settings__test: Scalars['String']['output'];
@@ -253,6 +264,7 @@ export type Mutation = {
   admin__core_languages__edit: ShowCoreLanguages;
   admin__core_main_settings__edit: EditAdminSettingsObj;
   admin__core_manifest_metadata__edit: ShowAdminManifestMetadataObj;
+  admin__core_members__confirm_email: Scalars['String']['output'];
   admin__core_members__create: SignUpCoreSessionsObj;
   admin__core_members__delete: Scalars['String']['output'];
   admin__core_members__edit: EditAdminMembersObj;
@@ -265,6 +277,8 @@ export type Mutation = {
   admin__core_plugins__nav__create: ShowAdminNavPluginsObj;
   admin__core_plugins__nav__delete: Scalars['String']['output'];
   admin__core_plugins__nav__edit: ShowAdminNavPluginsObj;
+  admin__core_plugins__permissions_admin__create_edit: ShowAdminPermissionsAdminPluginsObj;
+  admin__core_plugins__permissions_admin__delete: Scalars['String']['output'];
   admin__core_plugins__upload: Scalars['String']['output'];
   admin__core_security__captcha__edit: ShowAdminCaptchaSecurityObj;
   admin__core_staff_administrators__create: ShowAdminStaffAdministrators;
@@ -293,9 +307,15 @@ export type Mutation = {
 };
 
 
+export type MutationAdmin__Core_Ai__TestArgs = {
+  prompt: Scalars['String']['input'];
+};
+
+
 export type MutationAdmin__Core_Authorization_Settings__EditArgs = {
   force_login: Scalars['Boolean']['input'];
   lock_register: Scalars['Boolean']['input'];
+  require_confirm_email: Scalars['Boolean']['input'];
 };
 
 
@@ -303,14 +323,10 @@ export type MutationAdmin__Core_Email_Settings__EditArgs = {
   color_primary: Scalars['String']['input'];
   color_primary_foreground: Scalars['String']['input'];
   logo?: InputMaybe<UploadWithKeepCoreFilesArgs>;
-  provider: EmailProvider;
-  resend_key?: InputMaybe<Scalars['String']['input']>;
-  smtp?: InputMaybe<SmtpEditAdminEmailSettingsService>;
 };
 
 
 export type MutationAdmin__Core_Email_Settings__TestArgs = {
-  from: Scalars['String']['input'];
   message: Scalars['String']['input'];
   preview_text?: InputMaybe<Scalars['String']['input']>;
   subject: Scalars['String']['input'];
@@ -371,6 +387,7 @@ export type MutationAdmin__Core_Languages__EditArgs = {
 
 
 export type MutationAdmin__Core_Main_Settings__EditArgs = {
+  contact_email: Scalars['String']['input'];
   site_copyright: Array<StringLanguageInput>;
   site_description: Array<StringLanguageInput>;
   site_name: Scalars['String']['input'];
@@ -383,6 +400,11 @@ export type MutationAdmin__Core_Manifest_Metadata__EditArgs = {
   display: Scalars['String']['input'];
   start_url: Scalars['String']['input'];
   theme_color: Scalars['String']['input'];
+};
+
+
+export type MutationAdmin__Core_Members__Confirm_EmailArgs = {
+  id: Scalars['Float']['input'];
 };
 
 
@@ -481,6 +503,21 @@ export type MutationAdmin__Core_Plugins__Nav__EditArgs = {
 };
 
 
+export type MutationAdmin__Core_Plugins__Permissions_Admin__Create_EditArgs = {
+  id: Scalars['String']['input'];
+  old_id?: InputMaybe<Scalars['String']['input']>;
+  parent_id?: InputMaybe<Scalars['String']['input']>;
+  plugin_code: Scalars['String']['input'];
+};
+
+
+export type MutationAdmin__Core_Plugins__Permissions_Admin__DeleteArgs = {
+  id: Scalars['String']['input'];
+  parent_id?: InputMaybe<Scalars['String']['input']>;
+  plugin_code: Scalars['String']['input'];
+};
+
+
 export type MutationAdmin__Core_Plugins__UploadArgs = {
   code?: InputMaybe<Scalars['String']['input']>;
   file: Scalars['Upload']['input'];
@@ -528,7 +565,6 @@ export type MutationAdmin__Core_Styles__Nav__CreateArgs = {
   description: Array<StringLanguageInput>;
   external: Scalars['Boolean']['input'];
   href: Scalars['String']['input'];
-  icon?: InputMaybe<Scalars['String']['input']>;
   name: Array<StringLanguageInput>;
 };
 
@@ -542,7 +578,6 @@ export type MutationAdmin__Core_Styles__Nav__EditArgs = {
   description: Array<StringLanguageInput>;
   external: Scalars['Boolean']['input'];
   href: Scalars['String']['input'];
-  icon?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['Int']['input'];
   name: Array<StringLanguageInput>;
 };
@@ -639,9 +674,17 @@ export type PageInfo = {
   totalCount: Scalars['Float']['output'];
 };
 
+export type PermissionsAdminStaffAdministrators = {
+  __typename?: 'PermissionsAdminStaffAdministrators';
+  permissions: Array<ShowAdminPermissionsAdminPluginsObj>;
+  plugin: Scalars['String']['output'];
+  plugin_code: Scalars['String']['output'];
+};
+
 export type Query = {
   __typename?: 'Query';
   admin__core_authorization_settings__show: ShowAdminAuthorizationSettingsObj;
+  admin__core_email__logs: LogsAdminEmailObj;
   admin__core_email_settings__show: ShowAdminEmailSettingsServiceObj;
   admin__core_files__show: ShowAdminFilesObj;
   admin__core_groups__show: ShowAdminGroupsObj;
@@ -649,6 +692,7 @@ export type Query = {
   admin__core_members__show: ShowAdminMembersObj;
   admin__core_members__stats_sign_up: Array<SignUpStatsAdminMembers>;
   admin__core_plugins__nav__show: Array<ShowAdminNavPluginsObj>;
+  admin__core_plugins__permissions_admin__show: Array<ShowAdminPermissionsAdminPluginsObj>;
   admin__core_plugins__show: ShowAdminPluginsObj;
   admin__core_security__captcha__show: ShowAdminCaptchaSecurityObj;
   admin__core_staff_administrators__show: ShowAdminStaffAdministratorsObj;
@@ -657,7 +701,6 @@ export type Query = {
   admin__nav__show: Array<ShowAdminNavObj>;
   admin__sessions__authorization: AuthorizationAdminSessionsObj;
   admin__sessions__search: SearchAdminSessionsObj;
-  blog_categories__show: ShowBlogCategoriesObj;
   core_files__show: ShowCoreFilesObj;
   core_languages__show: ShowCoreLanguagesObj;
   core_members__show: ShowCoreMembersObj;
@@ -666,9 +709,17 @@ export type Query = {
   core_plugins__show: Array<ShowCorePluginsObj>;
   core_sessions__authorization: AuthorizationCoreSessionsObj;
   core_sessions__devices__show: Array<ShowCoreSessionDevicesObj>;
+  core_sessions__email_verify: Scalars['String']['output'];
   core_settings__show: ShowSettingsObj;
   core_terms__show: ShowCoreTermsObj;
   core_theme_editor__show: ShowCoreThemeEditorObj;
+};
+
+
+export type QueryAdmin__Core_Email__LogsArgs = {
+  cursor?: InputMaybe<Scalars['Int']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -706,6 +757,11 @@ export type QueryAdmin__Core_Plugins__Nav__ShowArgs = {
 };
 
 
+export type QueryAdmin__Core_Plugins__Permissions_Admin__ShowArgs = {
+  plugin_code: Scalars['String']['input'];
+};
+
+
 export type QueryAdmin__Core_Plugins__ShowArgs = {
   code?: InputMaybe<Scalars['String']['input']>;
   cursor?: InputMaybe<Scalars['Int']['input']>;
@@ -734,13 +790,6 @@ export type QueryAdmin__Core_Staff_Moderators__ShowArgs = {
 
 export type QueryAdmin__Sessions__SearchArgs = {
   search: Scalars['String']['input'];
-};
-
-
-export type QueryBlog_Categories__ShowArgs = {
-  cursor?: InputMaybe<Scalars['Int']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -779,19 +828,17 @@ export type QueryCore_Nav__ShowArgs = {
 };
 
 
+export type QueryCore_Sessions__Email_VerifyArgs = {
+  token: Scalars['String']['input'];
+  user_id: Scalars['Float']['input'];
+};
+
+
 export type QueryCore_Terms__ShowArgs = {
   code?: InputMaybe<Scalars['String']['input']>;
   cursor?: InputMaybe<Scalars['Int']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export type SmtpEditAdminEmailSettingsService = {
-  host: Scalars['String']['input'];
-  password: Scalars['String']['input'];
-  port: Scalars['Int']['input'];
-  secure: Scalars['Boolean']['input'];
-  user: Scalars['String']['input'];
 };
 
 export type SearchAdminSessionsObj = {
@@ -808,6 +855,7 @@ export type ShowAdminAuthorizationSettingsObj = {
   __typename?: 'ShowAdminAuthorizationSettingsObj';
   force_login: Scalars['Boolean']['output'];
   lock_register: Scalars['Boolean']['output'];
+  require_confirm_email: Scalars['Boolean']['output'];
 };
 
 export type ShowAdminCaptchaSecurityObj = {
@@ -820,12 +868,8 @@ export type ShowAdminCaptchaSecurityObj = {
 export type ShowAdminEmailSettingsServiceObj = {
   __typename?: 'ShowAdminEmailSettingsServiceObj';
   color_primary: Scalars['String']['output'];
+  is_enabled: Scalars['Boolean']['output'];
   logo?: Maybe<UploadCoreFilesObj>;
-  provider: EmailProvider | `${EmailProvider}`;
-  smtp_host?: Maybe<Scalars['String']['output']>;
-  smtp_port?: Maybe<Scalars['Int']['output']>;
-  smtp_secure?: Maybe<Scalars['Boolean']['output']>;
-  smtp_user?: Maybe<Scalars['String']['output']>;
 };
 
 export type ShowAdminFiles = {
@@ -899,6 +943,7 @@ export type ShowAdminMembers = {
   avatar?: Maybe<AvatarUser>;
   avatar_color: Scalars['String']['output'];
   email: Scalars['String']['output'];
+  email_verified: Scalars['Boolean']['output'];
   group: GroupUser;
   id: Scalars['Int']['output'];
   joined: Scalars['DateTime']['output'];
@@ -951,6 +996,17 @@ export type ShowAdminNavPluginsObj = {
   keywords: Array<Scalars['String']['output']>;
 };
 
+export type ShowAdminPermissionsAdminPlugins = {
+  __typename?: 'ShowAdminPermissionsAdminPlugins';
+  id: Scalars['String']['output'];
+};
+
+export type ShowAdminPermissionsAdminPluginsObj = {
+  __typename?: 'ShowAdminPermissionsAdminPluginsObj';
+  children: Array<ShowAdminPermissionsAdminPlugins>;
+  id: Scalars['String']['output'];
+};
+
 export type ShowAdminPlugins = {
   __typename?: 'ShowAdminPlugins';
   allow_default: Scalars['Boolean']['output'];
@@ -1000,6 +1056,7 @@ export type ShowAdminStaffAdministratorsObj = {
   __typename?: 'ShowAdminStaffAdministratorsObj';
   edges: Array<ShowAdminStaffAdministrators>;
   pageInfo: PageInfo;
+  permissions: Array<PermissionsAdminStaffAdministrators>;
 };
 
 export type ShowAdminStaffAdministratorsSortByArgs = {
@@ -1038,19 +1095,6 @@ export const ShowAdminStaffModeratorsSortingColumnEnum = {
 } as const;
 
 export type ShowAdminStaffModeratorsSortingColumnEnum = typeof ShowAdminStaffModeratorsSortingColumnEnum[keyof typeof ShowAdminStaffModeratorsSortingColumnEnum];
-export type ShowBlogCategories = {
-  __typename?: 'ShowBlogCategories';
-  color?: Maybe<Scalars['String']['output']>;
-  id: Scalars['Int']['output'];
-  name: Array<StringLanguage>;
-};
-
-export type ShowBlogCategoriesObj = {
-  __typename?: 'ShowBlogCategoriesObj';
-  edges: Array<ShowBlogCategories>;
-  pageInfo: PageInfo;
-};
-
 export type ShowCoreFiles = {
   __typename?: 'ShowCoreFiles';
   count_uses: Scalars['Int']['output'];
@@ -1156,6 +1200,8 @@ export type ShowCoreMiddlewareObj = {
   __typename?: 'ShowCoreMiddlewareObj';
   authorization: AuthorizationCoreMiddleware;
   editor: EditorShowCoreMiddleware;
+  is_ai_enabled: Scalars['Boolean']['output'];
+  is_email_enabled: Scalars['Boolean']['output'];
   languages: Array<LanguagesCoreMiddleware>;
   plugins: Array<Scalars['String']['output']>;
   security: SecurityCoreMiddleware;
@@ -1167,7 +1213,6 @@ export type ShowCoreNav = {
   description: Array<StringLanguage>;
   external: Scalars['Boolean']['output'];
   href: Scalars['String']['output'];
-  icon?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   name: Array<StringLanguage>;
   position: Scalars['Int']['output'];
@@ -1178,7 +1223,6 @@ export type ShowCoreNavItem = {
   description: Array<StringLanguage>;
   external: Scalars['Boolean']['output'];
   href: Scalars['String']['output'];
-  icon?: Maybe<Scalars['String']['output']>;
   id: Scalars['Int']['output'];
   name: Array<StringLanguage>;
   position: Scalars['Int']['output'];
@@ -1234,6 +1278,7 @@ export type ShowCoreThemeEditorObj = {
 
 export type ShowSettingsObj = {
   __typename?: 'ShowSettingsObj';
+  contact_email: Scalars['String']['output'];
   site_copyright: Array<StringLanguage>;
   site_description: Array<StringLanguage>;
   site_name: Scalars['String']['output'];
@@ -1243,7 +1288,10 @@ export type ShowSettingsObj = {
 export type SignUpCoreSessionsObj = {
   __typename?: 'SignUpCoreSessionsObj';
   email: Scalars['String']['output'];
+  email_verified: Scalars['Boolean']['output'];
   group_id: Scalars['Int']['output'];
+  id: Scalars['Float']['output'];
+  language: Scalars['String']['output'];
   name: Scalars['String']['output'];
   newsletter?: Maybe<Scalars['Boolean']['output']>;
 };

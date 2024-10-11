@@ -1,20 +1,12 @@
 {
   "name": "Blog",
-  "description": "Write an Awesome Articles.",
+  "description": "Simple blog plugin.",
   "code": "blog",
   "author": "VitNode",
   "author_url": "https://vitnode.com/",
-  "support_url": "https://vitnode.com/",
+  "support_url": "https://github.com/VitNode/vitnode-dev-plugins/issues",
   "allow_default": true,
-  "nav": [
-    {
-      "code": "categories",
-      "icon": "boxes",
-      "keywords": [
-        "blog categories"
-      ]
-    }
-  ],
-  "version": "0.0.2",
-  "version_code": 2
+  "nav": [],
+  "version": "0.0.1",
+  "version_code": 1
 }

@@ -10,6 +10,7 @@ enum AllowTypeFilesEnum {
 }
 
 type AuthorizationAdminSessionsObj {
+  files: FilesAuthorizationCoreSessions!
   restart_server: Boolean!
   user: AuthorizationCurrentUserObj
   version: String!
@@ -133,12 +134,6 @@ type EditorShowCoreMiddleware {
   sticky: Boolean!
 }
 
-enum EmailProvider {
-  none
-  resend
-  smtp
-}
-
 type FilesAuthorizationCoreSessions {
   allow_upload: Boolean!
   max_storage_for_submit: Int!
@@ -208,10 +203,25 @@ input LogosEditAdminThemeEditor {
   width: Float!
 }
 
+type LogsAdminEmail {
+  created: DateTime!
+  error: String!
+  html: String!
+  id: Float!
+  subject: String!
+  to: String!
+}
+
+type LogsAdminEmailObj {
+  edges: [LogsAdminEmail!]!
+  pageInfo: PageInfo!
+}
+
 type Mutation {
-  admin__core_authorization_settings__edit(force_login: Boolean!, lock_register: Boolean!): ShowAdminAuthorizationSettingsObj!
-  admin__core_email_settings__edit(color_primary: String!, color_primary_foreground: String!, logo: UploadWithKeepCoreFilesArgs, provider: EmailProvider!, resend_key: String, smtp: SMTPEditAdminEmailSettingsService): ShowAdminEmailSettingsServiceObj!
-  admin__core_email_settings__test(from: String!, message: String!, preview_text: String, subject: String!, to: String!): String!
+  admin__core_ai__test(prompt: String!): String!
+  admin__core_authorization_settings__edit(force_login: Boolean!, lock_register: Boolean!, require_confirm_email: Boolean!): ShowAdminAuthorizationSettingsObj!
+  admin__core_email_settings__edit(color_primary: String!, color_primary_foreground: String!, logo: UploadWithKeepCoreFilesArgs): ShowAdminEmailSettingsServiceObj!
+  admin__core_email_settings__test(message: String!, preview_text: String, subject: String!, to: String!): String!
   admin__core_files__delete(id: Int!): String!
   admin__core_groups__create(color: String, content: ContentCreateAdminGroups!, name: [StringLanguageInput!]!): ShowAdminGroups!
   admin__core_groups__delete(id: Int!): String!
@@ -219,8 +229,9 @@ type Mutation {
   admin__core_languages__create(allow_in_input: Boolean!, code: String!, locale: String!, name: String!, time_24: Boolean!, timezone: String!): ShowCoreLanguages!
   admin__core_languages__delete(code: String!): String!
   admin__core_languages__edit(allow_in_input: Boolean!, default: Boolean!, enabled: Boolean!, id: Int!, locale: String!, name: String!, time_24: Boolean!, timezone: String!): ShowCoreLanguages!
-  admin__core_main_settings__edit(site_copyright: [StringLanguageInput!]!, site_description: [StringLanguageInput!]!, site_name: String!, site_short_name: String!): EditAdminSettingsObj!
+  admin__core_main_settings__edit(contact_email: String!, site_copyright: [StringLanguageInput!]!, site_description: [StringLanguageInput!]!, site_name: String!, site_short_name: String!): EditAdminSettingsObj!
   admin__core_manifest_metadata__edit(background_color: String!, display: String!, start_url: String!, theme_color: String!): ShowAdminManifestMetadataObj!
+  admin__core_members__confirm_email(id: Float!): String!
   admin__core_members__create(email: String!, name: String!, password: String!): SignUpCoreSessionsObj!
   admin__core_members__delete(id: Float!): String!
   admin__core_members__edit(email: String!, id: Int!, name: String!, newsletter: Boolean!): EditAdminMembersObj!
@@ -233,6 +244,8 @@ type Mutation {
   admin__core_plugins__nav__create(code: String!, icon: String, keywords: [String!]!, parent_code: String, plugin_code: String!): ShowAdminNavPluginsObj!
   admin__core_plugins__nav__delete(code: String!, parent_code: String, plugin_code: String!): String!
   admin__core_plugins__nav__edit(code: String!, icon: String, keywords: [String!]!, parent_code: String, plugin_code: String!, previous_code: String!): ShowAdminNavPluginsObj!
+  admin__core_plugins__permissions_admin__create_edit(id: String!, old_id: String, parent_id: String, plugin_code: String!): ShowAdminPermissionsAdminPluginsObj!
+  admin__core_plugins__permissions_admin__delete(id: String!, parent_id: String, plugin_code: String!): String!
   admin__core_plugins__upload(code: String, file: Upload!): String!
   admin__core_security__captcha__edit(secret_key: String!, site_key: String!, type: CaptchaTypeEnum!): ShowAdminCaptchaSecurityObj!
   admin__core_staff_administrators__create(group_id: Int, unrestricted: Boolean!, user_id: Int): ShowAdminStaffAdministrators!
@@ -240,9 +253,9 @@ type Mutation {
   admin__core_staff_moderators__create(group_id: Int, unrestricted: Boolean!, user_id: Int): ShowAdminStaffModerators!
   admin__core_staff_moderators__delete(id: Int!): String!
   admin__core_styles__editor__edit(files: FilesEditAdminEditorStyles!, sticky: Boolean!): EditorShowCoreMiddleware!
-  admin__core_styles__nav__create(description: [StringLanguageInput!]!, external: Boolean!, href: String!, icon: String, name: [StringLanguageInput!]!): ShowCoreNav!
+  admin__core_styles__nav__create(description: [StringLanguageInput!]!, external: Boolean!, href: String!, name: [StringLanguageInput!]!): ShowCoreNav!
   admin__core_styles__nav__delete(id: Int!): String!
-  admin__core_styles__nav__edit(description: [StringLanguageInput!]!, external: Boolean!, href: String!, icon: String, id: Int!, name: [StringLanguageInput!]!): ShowCoreNav!
+  admin__core_styles__nav__edit(description: [StringLanguageInput!]!, external: Boolean!, href: String!, id: Int!, name: [StringLanguageInput!]!): ShowCoreNav!
   admin__core_terms_settings__create(code: String!, content: [StringLanguageInput!]!, href: String, title: [StringLanguageInput!]!): ShowCoreTerms!
   admin__core_terms_settings__delete(code: String!): String!
   admin__core_terms_settings__edit(code: String!, content: [StringLanguageInput!]!, href: String, id: Float!, title: [StringLanguageInput!]!): ShowCoreTerms!
@@ -277,8 +290,15 @@ type PageInfo {
   totalCount: Float!
 }
 
+type PermissionsAdminStaffAdministrators {
+  permissions: [ShowAdminPermissionsAdminPluginsObj!]!
+  plugin: String!
+  plugin_code: String!
+}
+
 type Query {
   admin__core_authorization_settings__show: ShowAdminAuthorizationSettingsObj!
+  admin__core_email__logs(cursor: Int, first: Int, last: Int): LogsAdminEmailObj!
   admin__core_email_settings__show: ShowAdminEmailSettingsServiceObj!
   admin__core_files__show(cursor: Int, first: Int, last: Int, search: String, sortBy: ShowCoreFilesSortByArgs): ShowAdminFilesObj!
   admin__core_groups__show(cursor: Int, first: Int, last: Int, search: String, sortBy: ShowAdminGroupsSortByArgs): ShowAdminGroupsObj!
@@ -286,6 +306,7 @@ type Query {
   admin__core_members__show(cursor: Int, first: Int, groups: [Int!], id: Float, last: Int, search: String, sortBy: ShowAdminMembersSortByArgs): ShowAdminMembersObj!
   admin__core_members__stats_sign_up: [SignUpStatsAdminMembers!]!
   admin__core_plugins__nav__show(plugin_code: String!): [ShowAdminNavPluginsObj!]!
+  admin__core_plugins__permissions_admin__show(plugin_code: String!): [ShowAdminPermissionsAdminPluginsObj!]!
   admin__core_plugins__show(code: String, cursor: Int, first: Int, last: Int, search: String, sortBy: ShowAdminPluginsSortByArgs): ShowAdminPluginsObj!
   admin__core_security__captcha__show: ShowAdminCaptchaSecurityObj!
   admin__core_staff_administrators__show(cursor: Int, first: Int, last: Int, sortBy: ShowAdminStaffAdministratorsSortByArgs): ShowAdminStaffAdministratorsObj!
@@ -294,7 +315,6 @@ type Query {
   admin__nav__show: [ShowAdminNavObj!]!
   admin__sessions__authorization: AuthorizationAdminSessionsObj!
   admin__sessions__search(search: String!): SearchAdminSessionsObj!
-  blog_categories__show(cursor: Int, first: Int, last: Int): ShowBlogCategoriesObj!
   core_files__show(cursor: Int, first: Int, last: Int, search: String, sortBy: ShowCoreFilesSortByArgs): ShowCoreFilesObj!
   core_languages__show(cursor: Int, first: Int, last: Int, search: String, sortBy: ShowCoreLanguagesSortByArgs): ShowCoreLanguagesObj!
   core_members__show(cursor: Int, first: Int, last: Int, name_seo: String, search: String, sortBy: ShowCoreMembersSortByArgs): ShowCoreMembersObj!
@@ -303,17 +323,10 @@ type Query {
   core_plugins__show: [ShowCorePluginsObj!]!
   core_sessions__authorization: AuthorizationCoreSessionsObj!
   core_sessions__devices__show: [ShowCoreSessionDevicesObj!]!
+  core_sessions__email_verify(token: String!, user_id: Float!): String!
   core_settings__show: ShowSettingsObj!
   core_terms__show(code: String, cursor: Int, first: Int, last: Int): ShowCoreTermsObj!
   core_theme_editor__show: ShowCoreThemeEditorObj!
-}
-
-input SMTPEditAdminEmailSettingsService {
-  host: String!
-  password: String!
-  port: Int!
-  secure: Boolean!
-  user: String!
 }
 
 type SearchAdminSessionsObj {
@@ -327,6 +340,7 @@ type SecurityCoreMiddleware {
 type ShowAdminAuthorizationSettingsObj {
   force_login: Boolean!
   lock_register: Boolean!
+  require_confirm_email: Boolean!
 }
 
 type ShowAdminCaptchaSecurityObj {
@@ -337,12 +351,8 @@ type ShowAdminCaptchaSecurityObj {
 
 type ShowAdminEmailSettingsServiceObj {
   color_primary: String!
+  is_enabled: Boolean!
   logo: UploadCoreFilesObj
-  provider: EmailProvider!
-  smtp_host: String
-  smtp_port: Int
-  smtp_secure: Boolean
-  smtp_user: String
 }
 
 type ShowAdminFiles {
@@ -409,6 +419,7 @@ type ShowAdminMembers {
   avatar: AvatarUser
   avatar_color: String!
   email: String!
+  email_verified: Boolean!
   group: GroupUser!
   id: Int!
   joined: DateTime!
@@ -456,6 +467,15 @@ type ShowAdminNavPluginsObj {
   keywords: [String!]!
 }
 
+type ShowAdminPermissionsAdminPlugins {
+  id: String!
+}
+
+type ShowAdminPermissionsAdminPluginsObj {
+  children: [ShowAdminPermissionsAdminPlugins!]!
+  id: String!
+}
+
 type ShowAdminPlugins {
   allow_default: Boolean!
   author: String!
@@ -500,6 +520,7 @@ type ShowAdminStaffAdministrators {
 type ShowAdminStaffAdministratorsObj {
   edges: [ShowAdminStaffAdministrators!]!
   pageInfo: PageInfo!
+  permissions: [PermissionsAdminStaffAdministrators!]!
 }
 
 input ShowAdminStaffAdministratorsSortByArgs {
@@ -532,17 +553,6 @@ input ShowAdminStaffModeratorsSortByArgs {
 
 enum ShowAdminStaffModeratorsSortingColumnEnum {
   updated
-}
-
-type ShowBlogCategories {
-  color: String
-  id: Int!
-  name: [StringLanguage!]!
-}
-
-type ShowBlogCategoriesObj {
-  edges: [ShowBlogCategories!]!
-  pageInfo: PageInfo!
 }
 
 type ShowCoreFiles {
@@ -640,6 +650,8 @@ enum ShowCoreMembersSortingColumnEnum {
 type ShowCoreMiddlewareObj {
   authorization: AuthorizationCoreMiddleware!
   editor: EditorShowCoreMiddleware!
+  is_ai_enabled: Boolean!
+  is_email_enabled: Boolean!
   languages: [LanguagesCoreMiddleware!]!
   plugins: [String!]!
   security: SecurityCoreMiddleware!
@@ -650,7 +662,6 @@ type ShowCoreNav {
   description: [StringLanguage!]!
   external: Boolean!
   href: String!
-  icon: String
   id: Int!
   name: [StringLanguage!]!
   position: Int!
@@ -660,7 +671,6 @@ type ShowCoreNavItem {
   description: [StringLanguage!]!
   external: Boolean!
   href: String!
-  icon: String
   id: Int!
   name: [StringLanguage!]!
   position: Int!
@@ -709,6 +719,7 @@ type ShowCoreThemeEditorObj {
 }
 
 type ShowSettingsObj {
+  contact_email: String!
   site_copyright: [StringLanguage!]!
   site_description: [StringLanguage!]!
   site_name: String!
@@ -717,7 +728,10 @@ type ShowSettingsObj {
 
 type SignUpCoreSessionsObj {
   email: String!
+  email_verified: Boolean!
   group_id: Int!
+  id: Float!
+  language: String!
   name: String!
   newsletter: Boolean
 }
