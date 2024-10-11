@@ -2,12 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-enum AiProvider {
-  google
-  none
-  openai
-}
-
 enum AllowTypeFilesEnum {
   all
   images
@@ -140,12 +134,6 @@ type EditorShowCoreMiddleware {
   sticky: Boolean!
 }
 
-enum EmailProvider {
-  none
-  resend
-  smtp
-}
-
 type FilesAuthorizationCoreSessions {
   allow_upload: Boolean!
   max_storage_for_submit: Int!
@@ -220,7 +208,6 @@ type LogsAdminEmail {
   error: String!
   html: String!
   id: Float!
-  provider: String!
   subject: String!
   to: String!
 }
@@ -231,10 +218,9 @@ type LogsAdminEmailObj {
 }
 
 type Mutation {
-  admin__core_ai__edit(key: String, model: String!, provider: AiProvider!): ShowAdminCoreAiObj!
   admin__core_ai__test(prompt: String!): String!
   admin__core_authorization_settings__edit(force_login: Boolean!, lock_register: Boolean!, require_confirm_email: Boolean!): ShowAdminAuthorizationSettingsObj!
-  admin__core_email_settings__edit(color_primary: String!, color_primary_foreground: String!, from: String!, logo: UploadWithKeepCoreFilesArgs, provider: EmailProvider!, resend_key: String, smtp: SMTPEditAdminEmailSettingsService): ShowAdminEmailSettingsServiceObj!
+  admin__core_email_settings__edit(color_primary: String!, color_primary_foreground: String!, logo: UploadWithKeepCoreFilesArgs): ShowAdminEmailSettingsServiceObj!
   admin__core_email_settings__test(message: String!, preview_text: String, subject: String!, to: String!): String!
   admin__core_files__delete(id: Int!): String!
   admin__core_groups__create(color: String, content: ContentCreateAdminGroups!, name: [StringLanguageInput!]!): ShowAdminGroups!
@@ -258,6 +244,8 @@ type Mutation {
   admin__core_plugins__nav__create(code: String!, icon: String, keywords: [String!]!, parent_code: String, plugin_code: String!): ShowAdminNavPluginsObj!
   admin__core_plugins__nav__delete(code: String!, parent_code: String, plugin_code: String!): String!
   admin__core_plugins__nav__edit(code: String!, icon: String, keywords: [String!]!, parent_code: String, plugin_code: String!, previous_code: String!): ShowAdminNavPluginsObj!
+  admin__core_plugins__permissions_admin__create_edit(id: String!, old_id: String, parent_id: String, plugin_code: String!): ShowAdminPermissionsAdminPluginsObj!
+  admin__core_plugins__permissions_admin__delete(id: String!, parent_id: String, plugin_code: String!): String!
   admin__core_plugins__upload(code: String, file: Upload!): String!
   admin__core_security__captcha__edit(secret_key: String!, site_key: String!, type: CaptchaTypeEnum!): ShowAdminCaptchaSecurityObj!
   admin__core_staff_administrators__create(group_id: Int, unrestricted: Boolean!, user_id: Int): ShowAdminStaffAdministrators!
@@ -302,8 +290,13 @@ type PageInfo {
   totalCount: Float!
 }
 
+type PermissionsAdminStaffAdministrators {
+  permissions: [ShowAdminPermissionsAdminPluginsObj!]!
+  plugin: String!
+  plugin_code: String!
+}
+
 type Query {
-  admin__core_ai__show: ShowAdminCoreAiObj!
   admin__core_authorization_settings__show: ShowAdminAuthorizationSettingsObj!
   admin__core_email__logs(cursor: Int, first: Int, last: Int): LogsAdminEmailObj!
   admin__core_email_settings__show: ShowAdminEmailSettingsServiceObj!
@@ -313,6 +306,7 @@ type Query {
   admin__core_members__show(cursor: Int, first: Int, groups: [Int!], id: Float, last: Int, search: String, sortBy: ShowAdminMembersSortByArgs): ShowAdminMembersObj!
   admin__core_members__stats_sign_up: [SignUpStatsAdminMembers!]!
   admin__core_plugins__nav__show(plugin_code: String!): [ShowAdminNavPluginsObj!]!
+  admin__core_plugins__permissions_admin__show(plugin_code: String!): [ShowAdminPermissionsAdminPluginsObj!]!
   admin__core_plugins__show(code: String, cursor: Int, first: Int, last: Int, search: String, sortBy: ShowAdminPluginsSortByArgs): ShowAdminPluginsObj!
   admin__core_security__captcha__show: ShowAdminCaptchaSecurityObj!
   admin__core_staff_administrators__show(cursor: Int, first: Int, last: Int, sortBy: ShowAdminStaffAdministratorsSortByArgs): ShowAdminStaffAdministratorsObj!
@@ -335,14 +329,6 @@ type Query {
   core_theme_editor__show: ShowCoreThemeEditorObj!
 }
 
-input SMTPEditAdminEmailSettingsService {
-  host: String!
-  password: String!
-  port: Int!
-  secure: Boolean!
-  user: String!
-}
-
 type SearchAdminSessionsObj {
   nav: [NavSearchAdminSessions!]!
 }
@@ -353,7 +339,6 @@ type SecurityCoreMiddleware {
 
 type ShowAdminAuthorizationSettingsObj {
   force_login: Boolean!
-  is_email_enabled: Boolean!
   lock_register: Boolean!
   require_confirm_email: Boolean!
 }
@@ -364,20 +349,10 @@ type ShowAdminCaptchaSecurityObj {
   type: CaptchaTypeEnum!
 }
 
-type ShowAdminCoreAiObj {
-  model: String
-  provider: AiProvider!
-}
-
 type ShowAdminEmailSettingsServiceObj {
   color_primary: String!
-  from: String!
+  is_enabled: Boolean!
   logo: UploadCoreFilesObj
-  provider: EmailProvider!
-  smtp_host: String
-  smtp_port: Int
-  smtp_secure: Boolean
-  smtp_user: String
 }
 
 type ShowAdminFiles {
@@ -492,6 +467,15 @@ type ShowAdminNavPluginsObj {
   keywords: [String!]!
 }
 
+type ShowAdminPermissionsAdminPlugins {
+  id: String!
+}
+
+type ShowAdminPermissionsAdminPluginsObj {
+  children: [ShowAdminPermissionsAdminPlugins!]!
+  id: String!
+}
+
 type ShowAdminPlugins {
   allow_default: Boolean!
   author: String!
@@ -536,6 +520,7 @@ type ShowAdminStaffAdministrators {
 type ShowAdminStaffAdministratorsObj {
   edges: [ShowAdminStaffAdministrators!]!
   pageInfo: PageInfo!
+  permissions: [PermissionsAdminStaffAdministrators!]!
 }
 
 input ShowAdminStaffAdministratorsSortByArgs {
@@ -665,6 +650,8 @@ enum ShowCoreMembersSortingColumnEnum {
 type ShowCoreMiddlewareObj {
   authorization: AuthorizationCoreMiddleware!
   editor: EditorShowCoreMiddleware!
+  is_ai_enabled: Boolean!
+  is_email_enabled: Boolean!
   languages: [LanguagesCoreMiddleware!]!
   plugins: [String!]!
   security: SecurityCoreMiddleware!

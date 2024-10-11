@@ -88,29 +88,17 @@
             "title": "Email Error Logs",
             "id": "ID",
             "to": "To",
-            "provider": "Provider",
             "subject": "Subject",
             "created": "Created",
             "error": "Error",
             "show": {
               "title": "Show log",
               "title_dialog": "Email Log - #{id}",
-              "to": "To: <email>{to}</email>, Using: <provider></provider>",
+              "to": "To: <email>{to}</email>",
               "html": "HTML",
               "error": "Error Message",
               "subject": "Subject"
             }
-          },
-          "provider": {
-            "title": "Email Provider",
-            "none": "None",
-            "smtp": "SMTP",
-            "resend": "Resend Email",
-            "resend_desc": "Read more on <link>Resend Email</link>."
-          },
-          "from": {
-            "title": "From",
-            "desc": "This email address will be used as the sender of the emails sent from your website."
           },
           "logo": "Logo",
           "resend_key": "Resend Key",
@@ -211,6 +199,19 @@
             "confirm": "Yes, delete policy",
             "success": "Policy has been deleted."
           }
+        },
+        "ai": {
+          "title": "Artificial Intelligence (AI)",
+          "desc": "Integrate powerful Artificial Intelligence to boost user experience with personalized content, smarter search, SEO optimization and more.",
+          "testing": {
+            "title": "Test Your AI",
+            "desc": "Here you can test your AI to see how it works.",
+            "response": "Response",
+            "response_success": "If you see the response, your AI is working correctly.",
+            "prompt": "Prompt",
+            "prompt_placeholder": "Ask a question...",
+            "submit": "Ask"
+          }
         }
       },
       "metadata": {
@@ -301,6 +302,30 @@
               "submit": "Yes, delete navigation",
               "desc": "This action will delete <code></code> navigation.",
               "success": "Navigation has been deleted."
+            }
+          },
+          "permissions-admin": {
+            "title": "Permissions in AdminCP",
+            "create_edit": {
+              "id": {
+                "label": "ID",
+                "desc": "Unique ID for this permission.",
+                "exists": "Permission with this ID already exists."
+              },
+              "parent": {
+                "label": "Parent Permission",
+                "null": "No parent permission"
+              },
+              "create_success": "Permission has been created."
+            },
+            "delete": {
+              "desc": "This action will delete the permission <id></id>. Remember to delete all conditions associated with this permission.",
+              "submit": "Yes, delete permission",
+              "success": "Permission has been deleted.",
+              "children_warn": {
+                "title": "This permission has children",
+                "desc": "If you delete this permission, all children will be deleted too."
+              }
             }
           }
         },
@@ -486,33 +511,6 @@
             "submit": "Yes, delete file"
           }
         }
-      },
-      "ai": {
-        "settings": {
-          "key": "API Key",
-          "title": "Settings (AI)",
-          "desc": "Integrate powerful Artificial Intelligence to boost user experience with personalized content, smarter search, SEO optimization and more.",
-          "none": "None",
-          "google": {
-            "title": "Google AI",
-            "desc": "Read more on <link>Google AI - VitNode Docs</link>."
-          },
-          "openai": {
-            "title": "OpenAI",
-            "desc": "Read more on <link>OpenAI - VitNode Docs</link>."
-          },
-          "model": "Model",
-          "provider": "Provider",
-          "testing": {
-            "title": "Test Your AI",
-            "desc": "Here you can test your AI to see how it works.",
-            "response": "Response",
-            "response_success": "If you see the response, your AI is working correctly.",
-            "prompt": "Prompt",
-            "prompt_placeholder": "Ask a question...",
-            "submit": "Ask"
-          }
-        }
       }
     },
     "members": {
@@ -602,25 +600,14 @@
         }
       },
       "staff": {
-        "title": "Staff",
-        "unrestricted": "Unrestricted",
-        "restricted": "Restricted",
-        "user": "User",
-        "group": "Group",
-        "already_exists": "This permission is already on the list.",
-        "table": {
-          "administrator": "Administrator",
-          "moderator": "Moderator",
+        "shared": {
           "type": "Type",
           "updated": "Updated",
-          "permissions": "Permissions"
-        },
-        "create_edit": {
-          "type": {
-            "title": "Type",
-            "user": "User",
-            "group": "Group"
-          },
+          "permissions": "Permissions",
+          "restricted": "Restricted",
+          "user": "User",
+          "group": "Group",
+          "already_exists": "This permission is already on the list.",
           "unrestricted": {
             "title": "Unrestricted",
             "desc": "Unrestricted administrators have full access to the admin control panel (AdminCP)."
@@ -628,6 +615,8 @@
         },
         "moderators": {
           "title": "Moderators",
+          "desc": "Manage access to the moderator panel (ModCP).",
+          "moderator": "Moderator",
           "add": {
             "title": "Add Moderator",
             "success": "Moderator has been added"
@@ -640,6 +629,8 @@
         },
         "administrators": {
           "title": "Administrators",
+          "desc": "Manage access to the administrator panel (AdminCP).",
+          "administrator": "Administrator",
           "add": {
             "title": "Add Administrator",
             "success": "Administrator has been added"
